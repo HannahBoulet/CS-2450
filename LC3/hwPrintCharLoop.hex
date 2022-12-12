@@ -1,0 +1,102 @@
+import java.util.*;
+public class MolecularMass
+{
+    public static void main(String[] args)
+    {
+        String m;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please Enter A Molecule: ");
+        IntStack mass = new IntStack(); 
+        m = sc.nextLine();
+
+        int counter = 0;
+        for (int i = 0; i < m.length(); i++)
+        {
+            int x;
+
+            char mole = m.charAt(i);
+            if(mole == 'C')
+            {
+                x = 12;
+                mass.push(x); 
+            }
+            if (mole == 'H')
+            {
+                x = 1;
+                mass.push(x);
+            }
+            if (mole == 'O')
+            {
+                x = 16;
+                mass.push(x);
+            }
+            if (mole == '2')
+            {
+                x = mass.pop() * 2;
+                mass.push(x);
+            }
+            if (mole == '3')
+            {
+                x = mass.pop() * 3;
+                mass.push(x);
+            }
+            if (mole == '4')
+            {
+                x = mass.pop() * 4;
+                mass.push(x);
+            }
+            if (mole == '5')
+            {
+                x = mass.pop() * 5;
+                mass.push(x);
+            }
+            if (mole == '6')
+            {
+                x = mass.pop() * 6;
+                mass.push(x);
+            }
+            if (mole == '7')
+            {
+                x = mass.pop() * 7;
+                mass.push(x);
+            }
+            if (mole == '8')
+            {
+                x = mass.pop() * 8;
+                mass.push(x);
+            }
+            if (mole == '9')
+            {
+                x = mass.pop() * 9;
+                mass.push(x);
+            }
+            if (mole == '(')
+            {
+                x = 0;
+                mass.push(x);
+            }
+            if (mole == ')')
+            {
+                int y;
+                x = 0;
+                do 
+                {
+                    y = mass.pop(); 
+                    x += y;
+                }
+                while(y != 0);
+                mass.push(x);
+            }
+            counter++;
+
+        }
+        
+        int molemass = 0;
+        while (!mass.isEmpty())
+        {
+            molemass += mass.pop();
+        }
+        System.out.println("Thank You For Entering A Molecule!");
+        System.out.println("Here Is The Molecular Mass of " + m + ", It Is " + molemass);
+    }
+}
